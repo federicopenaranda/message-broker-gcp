@@ -1,5 +1,20 @@
 steps:
-  # 1. Deploy the Bucket and Topics (Swallow error if already exists)
+  # 1. Enable all required APIs first
+  - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
+    entrypoint: 'bash'
+    args:
+      - '-c'
+      - |
+        gcloud services enable \
+          cloudfunctions.googleapis.com \
+          cloudbuild.googleapis.com \
+          run.googleapis.com \
+          artifactregistry.googleapis.com \
+          eventarc.googleapis.com \
+          pubsub.googleapis.com \
+          storage.googleapis.com
+
+  # 2. Deploy the Bucket and Topics (Swallow error if already exists)
   - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
     entrypoint: 'bash'
     args: 
@@ -9,7 +24,7 @@ steps:
         gcloud deployment-manager deployments update my-pubsub-stack --config main.yaml || \
         echo "Deployment already up to date"
 
-  # 2. Deploy the News Function
+  # 3. Deploy the News Function
   - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
     entrypoint: 'gcloud'
     args: 
@@ -23,7 +38,7 @@ steps:
       - '--entry-point=handleNews'
       - '--trigger-topic=news'
 
-  # 3. Deploy the Tutorials Function
+  # 4. Deploy the Tutorials Function
   - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
     entrypoint: 'gcloud'
     args: 
