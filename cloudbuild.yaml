@@ -31,3 +31,5 @@ steps:
       - '--source=.'
       - '--entry-point=handleTutorials'
       - '--trigger-topic=tutorials'
+options:
+  logging: CLOUD_LOGGING_ONLY
