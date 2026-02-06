@@ -1,0 +1,15 @@
+resources:
+- name: project-storage
+  type: storage.v1.bucket
+  properties:
+    location: US-CENTRAL1
+
+- name: news-topic
+  type: pubsub.v1.topic
+  properties:
+    topic: news
+
+- name: tutorials-topic
+  type: pubsub.v1.topic
+  properties:
+    topic: tutorials

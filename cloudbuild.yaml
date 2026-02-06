@@ -1,0 +1,33 @@
+steps:
+  # 1. Deploy the Bucket and Topics using Deployment Manager
+  - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
+    entrypoint: 'gcloud'
+    args: ['deployment-manager', 'deployments', 'create', 'my-pubsub-stack', '--config', 'main.yaml', '--continue-on-error']
+
+  # 2. Deploy the News Function
+  - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
+    entrypoint: 'gcloud'
+    args: 
+      - 'functions'
+      - 'deploy'
+      - 'news-processor'
+      - '--gen2'
+      - '--runtime=nodejs20'
+      - '--region=us-central1'
+      - '--source=.'
+      - '--entry-point=handleNews'
+      - '--trigger-topic=news'
+
+  # 3. Deploy the Tutorials Function
+  - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
+    entrypoint: 'gcloud'
+    args: 
+      - 'functions'
+      - 'deploy'
+      - 'tutorials-processor'
+      - '--gen2'
+      - '--runtime=nodejs20'
+      - '--region=us-central1'
+      - '--source=.'
+      - '--entry-point=handleTutorials'
+      - '--trigger-topic=tutorials'

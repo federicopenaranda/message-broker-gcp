@@ -1,0 +1,25 @@
+{
+  "name": "message-broker-gcp",
+  "version": "1.0.0",
+  "description": "",
+  "main": "news.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/federicopenaranda/message-broker-gcp.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/federicopenaranda/message-broker-gcp/issues"
+  },
+  "homepage": "https://github.com/federicopenaranda/message-broker-gcp#readme",
+  "dependencies": {
+    "@google-cloud/storage": "^7.18.0",
+    "google-it": "^1.6.4"
+  }
+}
