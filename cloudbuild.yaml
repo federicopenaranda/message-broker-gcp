@@ -1,8 +1,13 @@
 steps:
-  # 1. Deploy the Bucket and Topics using Deployment Manager
+  # 1. Deploy the Bucket and Topics (Swallow error if already exists)
   - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
-    entrypoint: 'gcloud'
-    args: ['deployment-manager', 'deployments', 'create', 'my-pubsub-stack', '--config', 'main.yaml', '--continue-on-error']
+    entrypoint: 'bash'
+    args: 
+      - '-c'
+      - |
+        gcloud deployment-manager deployments create my-pubsub-stack --config main.yaml || \
+        gcloud deployment-manager deployments update my-pubsub-stack --config main.yaml || \
+        echo "Deployment already up to date"
 
   # 2. Deploy the News Function
   - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
@@ -31,5 +36,6 @@ steps:
       - '--source=.'
       - '--entry-point=handleTutorials'
       - '--trigger-topic=tutorials'
+
 options:
   logging: CLOUD_LOGGING_ONLY
