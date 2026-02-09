@@ -1,7 +1,7 @@
 const { Storage } = require('@google-cloud/storage');
 const googleIt = require('google-it'); // Simplified search wrapper
 const storage = new Storage();
-const bucket = storage.bucket('project-storage');
+const bucket = storage.bucket('project-storage-federico-2026');
 
 exports.handleNews = async (cloudEvent) => {
   const searchTerm = Buffer.from(cloudEvent.data.message.data, 'base64').toString();
