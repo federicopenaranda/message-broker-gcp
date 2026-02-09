@@ -2,7 +2,7 @@ resources:
 - name: project-storage-federico-2026
   type: storage.v1.bucket
   properties:
-    location: US-CENTRAL1
+    location: us-central1
 
 - name: news-topic
   type: pubsub.v1.topic
