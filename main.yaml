@@ -1,5 +1,5 @@
 resources:
-- name: project-storage
+- name: project-storage-federico-2026
   type: storage.v1.bucket
   properties:
     location: US-CENTRAL1
