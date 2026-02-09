@@ -4,6 +4,8 @@ const storage = new Storage();
 const bucket = storage.bucket('project-storage-federico-2026');
 
 exports.handleNews = async (cloudEvent) => {
+  console.log("Full Event Object:", JSON.stringify(cloudEvent));
+  
   // 1. Safely extract the message object
   const pubsubMessage = cloudEvent.data?.message || cloudEvent.data;
 
