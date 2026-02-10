@@ -30,7 +30,7 @@ exports.handleTutorials = async (cloudEvent) => {
     throw new Error("API Key is missing! Check Secret Manager permissions.");
   }
 
-  const url = `https://www.googleapis.com/customsearch/v1?key=${API_KEY}&cx=${CX}&q=${encodeURIComponent(searchTerm)} tutorials`;
+  const url = `https://www.googleapis.com/customsearch/v1?key=${API_KEY}&cx=${CX}&q=${encodeURIComponent(searchTerm + ' tutorials')}`;
   console.log('URL: ', url);
   
   try {
