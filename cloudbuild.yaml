@@ -37,6 +37,8 @@ steps:
       - '--source=.'
       - '--entry-point=handleNews'
       - '--trigger-topic=news'
+      - '--set-secrets=GOOGLE_API_KEY=SEARCH_API_KEY:latest'
+      - '--set-env-vars=SEARCH_ENGINE_ID=SEARCH_ENGINE_ID:latest'
 
   # 4. Deploy the Tutorials Function
   - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
@@ -51,6 +53,8 @@ steps:
       - '--source=.'
       - '--entry-point=handleTutorials'
       - '--trigger-topic=tutorials'
+      - '--set-secrets=GOOGLE_API_KEY=SEARCH_API_KEY:latest'
+      - '--set-env-vars=SEARCH_ENGINE_ID=SEARCH_ENGINE_ID:latest'
 
 options:
   logging: CLOUD_LOGGING_ONLY

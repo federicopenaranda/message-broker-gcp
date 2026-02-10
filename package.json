@@ -20,7 +20,6 @@
   "homepage": "https://github.com/federicopenaranda/message-broker-gcp#readme",
   "dependencies": {
     "@google-cloud/functions-framework": "^5.0.0",
-    "@google-cloud/storage": "^7.18.0",
-    "google-it": "^1.6.4"
+    "@google-cloud/storage": "^7.18.0"
   }
 }
