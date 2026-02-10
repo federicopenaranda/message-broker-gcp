@@ -12,13 +12,13 @@ exports.handleNews = async (cloudEvent) => {
   console.log('pubsubMessage>', pubsubMessage);
 
   // 2. Check if data exists
-  if (!pubsubMessage || !pubsubMessage.data) {
+  if (!pubsubMessage) {
     console.error("No Pub/Sub message data found in the event.");
     return;
   }
 
   // 3. Decode the base64 string
-  const searchTerm = Buffer.from(pubsubMessage.data, 'base64').toString().trim();
+  const searchTerm = Buffer.from(pubsubMessage, 'base64').toString().trim();
   
   console.log(`Processing search for: ${searchTerm}`);
   
